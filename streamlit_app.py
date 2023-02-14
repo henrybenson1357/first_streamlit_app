@@ -1,5 +1,6 @@
 import streamlit
 import pandas as pd
+import requests
 fruit_df= pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 fruit_df = fruit_df.set_index('Fruit')
 fruit_select = streamlit.multiselect("Pick some fruits:", list(fruit_df.index),['Avocado','Strawberries'])
@@ -11,3 +12,5 @@ streamlit.text('Omega 3 & Blueberry Oatmeal')
 streamlit.text('Kale, Spinach & Rocket Smoothie')
 streamlit.text('Hard-Boiled Free-Range Egg')
 streamlit.header('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+streamlit.text(fruityvice_response)
