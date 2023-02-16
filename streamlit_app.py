@@ -21,7 +21,7 @@ if streamlit.button('Get Fruit Load List'):
 fruit_to_add=streamlit.text_input('What fruit would you like to add?')
 if streamlit.button('Add Fruit to the List'):
   add_fruit_to_list=insert_row_snowflake(fruit_to_add)
-  streamlist.text(add_fruit_to_list)
+  streamlit.text(add_fruit_to_list)
 
 
 fruit_df= pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
