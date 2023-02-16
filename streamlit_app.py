@@ -3,8 +3,20 @@ import pandas as pd
 import requests
 import snowflake.connector
 
+
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
+def get_fruit_load_list():
+  with mycnx.cursor() as my_cur:
+    my_cur.execute("select * from fruit_load_list")
+    return my_cur.fetchall()
+def insert_row_snowflake(new_fruit):
+  with mycnx.cursor() as my_cur:
+      my_cur.execute("insert into fruit_load_list values ('"+str(new_fruit)+:')")
+      return "Thanks for adding "+new_fruit
+if streamlit.button('Get Fruit Load List'):
+  my_data_rows=get_fruit_load_list()
+  streamlit.dataframe(my_data_rows)
 my_cur.execute("select * from fruit_load_list")
 my_data_rows = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
