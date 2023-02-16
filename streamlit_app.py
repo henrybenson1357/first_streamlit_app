@@ -17,10 +17,12 @@ def insert_row_snowflake(new_fruit):
 if streamlit.button('Get Fruit Load List'):
   my_data_rows=get_fruit_load_list()
   streamlit.dataframe(my_data_rows)
-my_cur.execute("select * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
-streamlit.text("The fruit load list contains:")
-streamlit.text(my_data_rows)
+
+fruit_to_add=streamlit.text_input('What fruit would you like to add?')
+if streamlit.button('Add Fruit to the List')
+  add_fruit_to_list=insert_row_snowflake(fruit_to_add)
+  streamlist.text(add_fruit_to_list)
+
 
 fruit_df= pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 fruit_df = fruit_df.set_index('Fruit')
